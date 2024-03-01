@@ -1,6 +1,4 @@
 <template>
-    <div class="registerForm">
-        <h2>Заполните форму</h2>
         <form  @submit.prevent="submitForm" class="form">
             <div class="form__item">
                 <input id="postalCode" v-model="postalCode" />
@@ -27,9 +25,8 @@
                 <input id="house" v-model="house" />
                 <label for="house">Дом</label>
             </div>
-            <button class="registerForm__continue"> Далее</button>
+            <button class="form__continue"> Далее</button>
         </form>
-    </div>
   </template>
   
   <script>
@@ -71,12 +68,8 @@
   </script>
   
   <style lang="scss" scoped>
-.registerForm {
-    background: white;
-    padding: 40px 100px;
-    border-radius: 20px;
-    box-shadow: 0 4px 6px rgba(0.1, 0.1, 0.1, 0.1); 
-    &__continue {
+
+   .form__continue{
         background: #6d8be4;
         color: white;
         padding: 12px 30px;
@@ -135,16 +128,12 @@
             }
         }
 }
-}
-@media (max-width:500px) {
-    .registerForm {
-        padding: 10px;
 
-        .form {
-            align-items: center;
-            .form__item {
-                width: 280px;
-            }
+@media (max-width:500px) {
+    .form {
+        align-items: center;
+        .form__item {
+            width: 280px;
         }
     }
 }

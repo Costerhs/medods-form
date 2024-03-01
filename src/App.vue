@@ -1,9 +1,14 @@
 <template>
   <div id="app">
-    <MainInfoForm @set-data="setData" v-if="registrationStep == 1"/>
-    <AddressForm @set-data="setData" v-else-if="registrationStep==2"/>
-    <PasportForm @set-data="setData" v-else-if="registrationStep==3"/>
-    <ModalSuccess @restart="restart" v-else/>
+    <div class="registerForm">
+        <h2 v-if="registrationStep<=3">Заполните форму</h2>
+        <MainInfoForm @set-data="setData" v-if="registrationStep == 1"/>
+        <AddressForm @set-data="setData" v-else-if="registrationStep==2"/>
+        <PasportForm @set-data="setData" v-else-if="registrationStep==3"/>
+        <ModalSuccess @restart="restart" v-else/>
+    </div>
+
+
   </div>
 </template>
 
@@ -56,5 +61,16 @@ body {
   color: #2c3e50;
   margin-top: 60px;
   background: #f0f5ff;
+}
+.registerForm {
+    background: white;
+    padding: 40px 100px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0.1, 0.1, 0.1, 0.1); 
+}
+@media (max-width:500px) {
+    .registerForm {
+        padding: 10px;
+    }
 }
 </style>

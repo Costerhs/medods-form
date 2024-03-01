@@ -1,39 +1,35 @@
 <template>
-    <div class="registerForm">
-        <h2>Заполните форму</h2>
-        <form @submit.prevent="submitForm" class="form">
-            <div class="form__item">
-                <span v-if="$v.documentType.$error" class="form__error">Тип документа обязателен</span>
-                <select class="field" id="documentType" v-model="$v.documentType.$model" :class="{'is-invalid': $v.documentType.$error}">
-                    <option disabled value="">Выберите тип</option>
-                    <option>Паспорт</option>
-                    <option>Свидетельство о рождении</option>
-                    <option>Водительское удостоверение</option>
-                </select>
-                <label for="documentType">Тип документа</label>
-            </div>
-            <div class="form__item">
-                <input id="series" v-model="series" />
-                <label for="series">Серия</label>
-            </div>
-            <div class="form__item">
-                <input id="number" v-model="$v.number.$model" :class="{'is-invalid': $v.number.$error}" />
-                <label for="number">Номер</label>
-            </div>
-            <div class="form__item">
-                <input id="issuedBy" v-model="issuedBy" />
-                <label for="issuedBy">Кем выдан</label>
-            </div>
-            <div class="form__item">
-                <span v-if="$v.issueDate.$error" class="form__error">Дата выдачи обязательна</span>
-                <input type="date" id="issueDate" v-model="$v.issueDate.$model" :class="{'is-invalid': $v.issueDate.$error}" />
-                <label for="issueDate">Дата выдачи</label>
-            </div>
+    <form @submit.prevent="submitForm" class="form">
+        <div class="form__item">
+            <span v-if="$v.documentType.$error" class="form__error">Тип документа обязателен</span>
+            <select class="field" id="documentType" v-model="$v.documentType.$model" :class="{'is-invalid': $v.documentType.$error}">
+                <option disabled value="">Выберите тип</option>
+                <option>Паспорт</option>
+                <option>Свидетельство о рождении</option>
+                <option>Водительское удостоверение</option>
+            </select>
+            <label for="documentType">Тип документа</label>
+        </div>
+        <div class="form__item">
+            <input id="series" v-model="series" />
+            <label for="series">Серия</label>
+        </div>
+        <div class="form__item">
+            <input id="number" v-model="$v.number.$model" :class="{'is-invalid': $v.number.$error}" />
+            <label for="number">Номер</label>
+        </div>
+        <div class="form__item">
+            <input id="issuedBy" v-model="issuedBy" />
+            <label for="issuedBy">Кем выдан</label>
+        </div>
+        <div class="form__item">
+            <span v-if="$v.issueDate.$error" class="form__error">Дата выдачи обязательна</span>
+            <input type="date" id="issueDate" v-model="$v.issueDate.$model" :class="{'is-invalid': $v.issueDate.$error}" />
+            <label for="issueDate">Дата выдачи</label>
+        </div>
 
-            <button class="registerForm__continue"> Далее</button>
-        </form>
-
-    </div>
+        <button class="form__continue"> Далее</button>
+    </form>
 </template>
   
 <script>
@@ -75,12 +71,7 @@
   </script>
   
 <style lang="scss" scoped>
-.registerForm {
-    background: white;
-    padding: 40px 100px;
-    border-radius: 20px;
-    box-shadow: 0 4px 6px rgba(0.1, 0.1, 0.1, 0.1); 
-    &__continue {
+    .form__continue {
         background: #6d8be4;
         color: white;
         padding: 12px 30px;
@@ -139,16 +130,12 @@
             }
         }
 }
-}
-@media (max-width:500px) {
-    .registerForm {
-        padding: 10px;
 
-        .form {
-            align-items: center;
-            .form__item {
-                width: 280px;
-            }
+@media (max-width:500px) {
+    .form {
+        align-items: center;
+        .form__item {
+            width: 280px;
         }
     }
 }

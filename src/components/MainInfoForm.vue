@@ -1,65 +1,62 @@
 <template>
-    <div class="registerForm">
-        <h2>Заполните форму</h2>
-        <form @submit.prevent="submitForm" class="form">
-            <div class="form__item">
-                <p v-if="$v.firstName.$error" class="form__error">Это поле обязательна</p>
-                <input v-model.trim="$v.firstName.$model" type="text" id="firstname">
-                <label for="firstname">Имя</label>
-            </div>
-            <div class="form__item">
-                <p v-if="$v.lastName.$error" class="form__error">Это поле обязательна</p>
-                <input  v-model.trim="$v.lastName.$model"  type="text" id="lastname">
-                <label for="lastname">Фамилия</label>
-            </div>
-            <div class="form__item">
-                <input id="patronymic" v-model.trim="$v.patronymic.$model" />
-                <label for="patronymic">Отчество</label>
-            </div>
-            <div class="form__item">
-                <p v-if="$v.birthDate.$error" class="form__error">Дата рождения обязательна</p>
-                <input type="date" id="birthDate" v-model.trim="$v.birthDate.$model" :class="{'is-invalid': $v.birthDate.$error}" />
-                <label for="birthDate">Дата рождения</label>
-            </div>
-            <div class="form__item">
-                <p v-if="$v.phoneNumber.$error" class="form__error">Номер телефона обязателен и должен содержать 11 цифр</p>
-                <input id="phoneNumber" v-model.trim="$v.phoneNumber.$model" :class="{'is-invalid': $v.phoneNumber.$error}" />
-                <label for="phoneNumber">Номер телефона</label>
-            </div>
-            <div class="form__item">
-                <select class="field" id="gender" v-model.trim="$v.gender.$model">
-                    <option value=""></option>
-                    <option value="male">Мужской</option>
-                    <option value="female">Женский</option>
-                </select>
-                <label for="gender">Пол</label>
-            </div>   
-            <div class="form__item">
-                <p v-if="$v.customerGroup.$error" class="form__error">Выберите хотя бы одну группу клиентов</p>
-                <select class="field" multiple v-model.trim="$v.customerGroup.$model" :class="{'is-invalid': $v.customerGroup.$error}">
-                    <option value="VIP">VIP</option>
-                    <option value="problem">Проблемные</option>
-                    <option value="OMS">ОМС</option>
-                </select>
-                <label>Группа клиентов1</label>
-            </div>
-            <div class="form__item">
-                <p v-if="$v.attendingDoctor.$error" class="form__error">Выберите лечащего врача</p>
-                <select class="field" id="attendingDoctor" v-model.trim="$v.attendingDoctor.$model" :class="{'is-invalid': $v.attendingDoctor.$error}">
-                    <option value=""></option>
-                    <option value="Иванов">Иванов</option>
-                    <option value="Захаров">Захаров</option>
-                    <option value="Чернышева">Чернышева</option>
-                </select>
-                <label>Лечащий врач</label>
-            </div>
-            <div class="form__item form__row">
-                <label for="dontSendSms">Не отправлять Смс</label>
-                <input type="checkbox" id="dontSendSms" v-model.trim="$v.dontSendSms.$model" />
-            </div>
-            <button class="registerForm__continue"> Далее</button>
-        </form>
-    </div>
+    <form @submit.prevent="submitForm" class="form">
+        <div class="form__item">
+            <p v-if="$v.firstName.$error" class="form__error">Это поле обязательна</p>
+            <input v-model.trim="$v.firstName.$model" type="text" id="firstname">
+            <label for="firstname">Имя</label>
+        </div>
+        <div class="form__item">
+            <p v-if="$v.lastName.$error" class="form__error">Это поле обязательна</p>
+            <input  v-model.trim="$v.lastName.$model"  type="text" id="lastname">
+            <label for="lastname">Фамилия</label>
+        </div>
+        <div class="form__item">
+            <input id="patronymic" v-model.trim="$v.patronymic.$model" />
+            <label for="patronymic">Отчество</label>
+        </div>
+        <div class="form__item">
+            <p v-if="$v.birthDate.$error" class="form__error">Дата рождения обязательна</p>
+            <input type="date" id="birthDate" v-model.trim="$v.birthDate.$model" :class="{'is-invalid': $v.birthDate.$error}" />
+            <label for="birthDate">Дата рождения</label>
+        </div>
+        <div class="form__item">
+            <p v-if="$v.phoneNumber.$error" class="form__error">Номер телефона обязателен и должен содержать 11 цифр</p>
+            <input id="phoneNumber" v-model.trim="$v.phoneNumber.$model" :class="{'is-invalid': $v.phoneNumber.$error}" />
+            <label for="phoneNumber">Номер телефона</label>
+        </div>
+        <div class="form__item">
+            <select class="field" id="gender" v-model.trim="$v.gender.$model">
+                <option value=""></option>
+                <option value="male">Мужской</option>
+                <option value="female">Женский</option>
+            </select>
+            <label for="gender">Пол</label>
+        </div>   
+        <div class="form__item">
+            <p v-if="$v.customerGroup.$error" class="form__error">Выберите хотя бы одну группу клиентов</p>
+            <select class="field" multiple v-model.trim="$v.customerGroup.$model" :class="{'is-invalid': $v.customerGroup.$error}">
+                <option value="VIP">VIP</option>
+                <option value="problem">Проблемные</option>
+                <option value="OMS">ОМС</option>
+            </select>
+            <label>Группа клиентов1</label>
+        </div>
+        <div class="form__item">
+            <p v-if="$v.attendingDoctor.$error" class="form__error">Выберите лечащего врача</p>
+            <select class="field" id="attendingDoctor" v-model.trim="$v.attendingDoctor.$model" :class="{'is-invalid': $v.attendingDoctor.$error}">
+                <option value=""></option>
+                <option value="Иванов">Иванов</option>
+                <option value="Захаров">Захаров</option>
+                <option value="Чернышева">Чернышева</option>
+            </select>
+            <label>Лечащий врач</label>
+        </div>
+        <div class="form__item form__row">
+            <label for="dontSendSms">Не отправлять Смс</label>
+            <input type="checkbox" id="dontSendSms" v-model.trim="$v.dontSendSms.$model" />
+        </div>
+        <button class="form__continue"> Далее</button>
+    </form>
 </template>
 
 <script>
@@ -134,13 +131,7 @@
 </script>
 
 <style lang="scss" scoped>
-
-.registerForm {
-    background: white;
-    padding: 40px 10%;
-    border-radius: 20px;
-    box-shadow: 0 4px 6px rgba(0.1, 0.1, 0.1, 0.1); 
-    &__continue {
+    .form__continue {
         background: #6d8be4;
         color: white;
         padding: 12px 30px;
@@ -199,18 +190,14 @@
             }
         }
     }
-}
+
 
 @media (max-width:500px) {
-    .registerForm {
-        padding: 10px;
-
         .form {
             align-items: center;
             .form__item {
                 width: 280px;
             }
         }
-    }
 }
 </style>
