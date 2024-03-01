@@ -20,7 +20,7 @@
             <label for="birthDate">Дата рождения</label>
         </div>
         <div class="form__item">
-            <p v-if="$v.phoneNumber.$error" class="form__error">Номер телефона обязателен и должен содержать 11 цифр</p>
+            <p v-if="$v.phoneNumber.$error" class="form__error">Номер телефона обязателен, должен начинаться с 7 и  должен содержать 11 цифр</p>
             <input id="phoneNumber" v-model.trim="$v.phoneNumber.$model" :class="{'is-invalid': $v.phoneNumber.$error}" />
             <label for="phoneNumber">Номер телефона</label>
         </div>
@@ -60,10 +60,13 @@
 </template>
 
 <script>
-  import { required, 
-    minLength, maxLength, numeric
-} from 'vuelidate/lib/validators';
-  import { validationMixin } from 'vuelidate';
+    import { required,  minLength, maxLength, numeric} from 'vuelidate/lib/validators';
+    import { validationMixin } from 'vuelidate';
+
+    const currentPhoneNumber = (value) => {
+        if (typeof value !== 'string') return false;
+        return value.startsWith('7');
+    }
 
     export default {
         mixins: [validationMixin],
@@ -95,7 +98,8 @@
             required,
             minLength: minLength(11),
             maxLength: maxLength(11),
-            numeric
+            numeric,
+            currentPhoneNumber
         },
         gender: {},
         customerGroup: {
@@ -125,7 +129,8 @@
                 };
                 this.$emit('set-data',formData)
             }
-      }
+      },
+
     }
     }
 </script>
